@@ -1,0 +1,201 @@
+/* ==========================================================================
+   SIRATAI GLOBAL STYLES & UTILITIES
+   Restrained, Calibrated Atmosphere (Not dull, Not over-bright)
+   ========================================================================== */
+
+/* Ambient Background Atmosphere */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: -1;
+  background: 
+    radial-gradient(circle 800px at 85% 15%, rgba(22, 163, 106, 0.05) 0%, transparent 70%),
+    radial-gradient(circle 700px at 15% 85%, rgba(200, 169, 81, 0.03) 0%, transparent 60%),
+    radial-gradient(circle 900px at 50% -20%, rgba(43, 201, 130, 0.04) 0%, transparent 75%);
+  transition: opacity var(--transition-slow);
+}
+
+[data-theme="light"] body::before {
+  background:
+    radial-gradient(circle 800px at 85% 15%, rgba(18, 137, 90, 0.06) 0%, transparent 70%),
+    radial-gradient(circle 700px at 15% 85%, rgba(181, 150, 66, 0.04) 0%, transparent 60%),
+    radial-gradient(circle 900px at 50% -20%, rgba(28, 168, 108, 0.05) 0%, transparent 75%);
+}
+
+/* Subtle Geometric Ambient Grid */
+.ambient-pattern {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: -1;
+  opacity: 0.018;
+  background-size: 40px 40px;
+  background-image: 
+    linear-gradient(to right, #26322C 1px, transparent 1px),
+    linear-gradient(to bottom, #26322C 1px, transparent 1px);
+}
+
+[data-theme="light"] .ambient-pattern {
+  opacity: 0.035;
+  background-image: 
+    linear-gradient(to right, #142019 1px, transparent 1px),
+    linear-gradient(to bottom, #142019 1px, transparent 1px);
+}
+
+/* Custom Sleek Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border-default);
+  border-radius: var(--radius-full);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--border-hover);
+}
+
+/* Accessible Focus States */
+:focus-visible {
+  outline: 2px solid var(--color-emerald);
+  outline-offset: 2px;
+}
+
+/* Typography Hierarchy */
+.hero-title {
+  font-size: clamp(2.5rem, 5vw + 1rem, 4.25rem);
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.035em;
+  color: var(--text-primary);
+}
+
+.page-title {
+  font-size: clamp(1.75rem, 3vw + 0.5rem, 2.5rem);
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.025em;
+  color: var(--text-primary);
+}
+
+.section-title {
+  font-size: clamp(1.25rem, 2vw + 0.25rem, 1.75rem);
+  font-weight: 600;
+  line-height: 1.3;
+  letter-spacing: -0.015em;
+  color: var(--text-primary);
+}
+
+.card-title {
+  font-size: 1.125rem;
+  font-weight: 600;
+  line-height: 1.4;
+  color: var(--text-primary);
+}
+
+.text-body {
+  font-size: var(--text-base);
+  line-height: var(--leading-relaxed);
+  color: var(--text-secondary);
+}
+
+.text-sm {
+  font-size: var(--text-sm);
+  color: var(--text-secondary);
+}
+
+.text-xs {
+  font-size: var(--text-xs);
+  color: var(--text-muted);
+}
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: var(--text-xs);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--color-emerald);
+}
+
+/* Arabic Calligraphy Typography */
+.font-arabic {
+  font-family: var(--font-arabic);
+  font-size: 1.65rem;
+  line-height: var(--leading-arabic);
+  direction: rtl;
+  text-align: right;
+  font-weight: 500;
+  color: var(--text-primary);
+}
+
+.font-arabic-lg {
+  font-family: var(--font-arabic);
+  font-size: 2.15rem;
+  line-height: 2.4;
+  direction: rtl;
+  text-align: right;
+  font-weight: 500;
+  color: var(--text-primary);
+}
+
+/* Color Utility Classes */
+.text-emerald { color: var(--color-emerald); }
+.text-jade { color: var(--color-jade); }
+.text-gold { color: var(--color-gold); }
+.text-primary { color: var(--text-primary); }
+.text-secondary { color: var(--text-secondary); }
+.text-muted { color: var(--text-muted); }
+
+.bg-emerald-dim { background-color: var(--color-emerald-dim); }
+.bg-gold-dim { background-color: var(--color-gold-dim); }
+
+/* Layout Utilities */
+.container {
+  width: 100%;
+  max-width: var(--content-max-width);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: var(--space-6);
+  padding-right: var(--space-6);
+}
+
+.flex { display: flex; }
+.flex-col { display: flex; flex-direction: column; }
+.items-center { align-items: center; }
+.items-start { align-items: flex-start; }
+.justify-between { justify-content: space-between; }
+.justify-center { justify-content: center; }
+.justify-end { justify-content: flex-end; }
+.gap-1 { gap: var(--space-1); }
+.gap-2 { gap: var(--space-2); }
+.gap-3 { gap: var(--space-3); }
+.gap-4 { gap: var(--space-4); }
+.gap-6 { gap: var(--space-6); }
+.gap-8 { gap: var(--space-8); }
+.grid { display: grid; }
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}

@@ -1,0 +1,1219 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SiratAI — AI-Powered Islamic Knowledge, Reflection & Learning Platform</title>
+  <meta name="description" content="Explore Islamic knowledge through intelligent, source-grounded AI designed for learning, reflection, and discovery." />
+  
+  <!-- Typography -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Naskh+Arabic:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+
+  <!-- Unified Stylesheet -->
+  <link rel="stylesheet" href="style.css" />
+
+  <!-- D3.js & Chart.js CDNs -->
+  <script src="https://cdn.jsdelivr.net/npm/d3@7" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js" defer></script>
+</head>
+<body>
+  <!-- Ambient Geometric Grid -->
+  <div class="ambient-pattern"></div>
+
+  <div class="app-wrapper">
+    <!-- ====================================================================
+         COLLAPSIBLE SIDEBAR
+         ==================================================================== -->
+    <aside class="sidebar" id="appSidebar" aria-label="Main Navigation">
+      <!-- Brand Header -->
+      <div class="sidebar-header">
+        <div class="brand-container">
+          <div class="brand-symbol">✦</div>
+          <div class="brand-text">
+            <span class="brand-name">SIRAT AI</span>
+            <span class="brand-tagline">AI KNOWLEDGE PLATFORM</span>
+          </div>
+        </div>
+        <button class="sidebar-collapse-btn" id="sidebarCollapseBtn" aria-label="Toggle Sidebar Collapse">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16">
+            <polyline points="15 18 9 12 15 6"></polyline>
+          </svg>
+        </button>
+      </div>
+
+      <!-- Navigation Groups -->
+      <nav class="sidebar-nav">
+        <!-- Group: Home -->
+        <div class="nav-group">
+          <div class="nav-group-title">Home</div>
+          <a href="#home" class="nav-item active" data-view="home">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+            <span>Home</span>
+          </a>
+        </div>
+
+        <!-- Group: AI -->
+        <div class="nav-group">
+          <div class="nav-group-title">AI</div>
+          <a href="#ask" class="nav-item" data-view="ask">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+            <span>Ask SiratAI</span>
+          </a>
+          <a href="#search" class="nav-item" data-view="search">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+            <span>Smart Search</span>
+          </a>
+        </div>
+
+        <!-- Group: Knowledge -->
+        <div class="nav-group">
+          <div class="nav-group-title">Knowledge</div>
+          <a href="#quran" class="nav-item" data-view="quran">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+            <span>Quran</span>
+          </a>
+          <a href="#hadith" class="nav-item" data-view="hadith">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="9" y1="9" x2="15" y2="9"/><line x1="9" y1="13" x2="15" y2="13"/><line x1="9" y1="17" x2="13" y2="17"/></svg>
+            <span>Hadith</span>
+          </a>
+          <a href="#duas" class="nav-item" data-view="duas">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <span>Duas</span>
+          </a>
+          <a href="#adhkar" class="nav-item" data-view="adhkar">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="M4.93 4.93l1.41 1.41"/><path d="M17.66 17.66l1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="M6.34 17.66l-1.41 1.41"/><path d="M19.07 4.93l-1.41 1.41"/></svg>
+            <span>Adhkar</span>
+          </a>
+        </div>
+
+        <!-- Group: Practice -->
+        <div class="nav-group">
+          <div class="nav-group-title">Practice</div>
+          <a href="#tasbeeh" class="nav-item" data-view="tasbeeh">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="3"/></svg>
+            <span>Tasbeeh</span>
+          </a>
+          <a href="#reflection" class="nav-item" data-view="reflection">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+            <span>Reflection</span>
+          </a>
+        </div>
+
+        <!-- Group: Learning -->
+        <div class="nav-group">
+          <div class="nav-group-title">Learning</div>
+          <a href="#learn" class="nav-item" data-view="learn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8"/></svg>
+            <span>Learning Paths</span>
+          </a>
+          <a href="#quiz" class="nav-item" data-view="quiz">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+            <span>Knowledge Check</span>
+          </a>
+          <a href="#graph" class="nav-item" data-view="graph">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+            <span>Knowledge Map</span>
+          </a>
+        </div>
+
+        <!-- Group: Personal -->
+        <div class="nav-group">
+          <div class="nav-group-title">Personal</div>
+          <a href="#library" class="nav-item" data-view="library">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+            <span>My Library</span>
+          </a>
+          <a href="#history" class="nav-item" data-view="history">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            <span>History</span>
+          </a>
+          <a href="#dashboard" class="nav-item" data-view="dashboard">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="9"/><rect x="14" y="3" width="7" height="5"/><rect x="14" y="12" width="7" height="9"/><rect x="3" y="16" width="7" height="5"/></svg>
+            <span>My Dashboard</span>
+          </a>
+        </div>
+
+        <!-- Group: System -->
+        <div class="nav-group">
+          <div class="nav-group-title">System</div>
+          <a href="#settings" class="nav-item" data-view="settings">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+            <span>Settings</span>
+          </a>
+        </div>
+      </nav>
+
+      <!-- Sidebar Footer -->
+      <div class="sidebar-footer">
+        <div style="font-size: 0.65rem; color: var(--text-muted); line-height: 1.4;">
+          SiratAI v2.4 • Source Grounded
+        </div>
+      </div>
+    </aside>
+
+    <!-- ====================================================================
+         MAIN VIEWPORT
+         ==================================================================== -->
+    <main class="app-main">
+      <!-- Sticky Dynamic Topbar -->
+      <header class="topbar">
+        <div class="topbar-left">
+          <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Open Mobile Menu">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20">
+              <line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/>
+            </svg>
+          </button>
+          <div class="breadcrumb">
+            <span>SiratAI</span>
+            <span style="color: var(--border-hover);">/</span>
+            <span class="breadcrumb-active" id="topbarBreadcrumb">Home</span>
+          </div>
+        </div>
+
+        <!-- Global Search Trigger (Ctrl+K) -->
+        <button class="global-search-btn" id="globalSearchBtn" aria-label="Global Search">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16" class="search-icon">
+            <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+          </svg>
+          <span>Search SiratAI...</span>
+          <span class="search-shortcut">Ctrl K</span>
+        </button>
+
+        <!-- Topbar Right Actions -->
+        <div class="topbar-right">
+          <!-- Language Selector -->
+          <select id="languageSelect" class="icon-btn" style="width: auto; padding: 0 10px; font-size: var(--text-xs); font-weight: 600;" aria-label="Select Language">
+            <option value="en">EN</option>
+            <option value="ar">العربية (AR)</option>
+            <option value="ur">اردو (UR)</option>
+            <option value="hi">हिंदी (HI)</option>
+            <option value="hinglish">Hinglish</option>
+            <option value="mr">मराठी (MR)</option>
+          </select>
+
+          <!-- Theme Toggle -->
+          <button class="icon-btn" id="themeToggleBtn" aria-label="Toggle Theme">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+          </button>
+
+          <!-- Notification Drawer Trigger -->
+          <button class="icon-btn" id="notificationsBtn" aria-label="Notifications">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+            <span class="badge-dot"></span>
+          </button>
+
+          <!-- User Profile Avatar -->
+          <button class="user-avatar-btn" id="userProfileBtn" aria-label="User Profile">
+            <div class="user-avatar-circle">K</div>
+            <span class="user-avatar-name">Khushi</span>
+          </button>
+        </div>
+      </header>
+
+      <!-- Dynamic Views Container -->
+      <div class="content-viewport">
+        
+        <!-- ==================================================================
+             VIEW: HOME
+             ================================================================== -->
+        <section class="app-view active" id="view-home">
+          <!-- Hero Section -->
+          <div class="home-hero">
+            <div class="hero-content">
+              <div class="eyebrow">✦ AI-POWERED ISLAMIC KNOWLEDGE</div>
+              <h1 class="hero-title">
+                Understand.<br />
+                Reflect. Learn.<br />
+                <span style="color: var(--color-emerald-light);">Apply.</span>
+              </h1>
+              <p class="hero-subtitle">
+                Explore Islamic knowledge through intelligent, source-grounded AI designed for personalized learning, contemplation, and daily life practice.
+              </p>
+
+              <!-- Hero Search Box -->
+              <div class="hero-search-box">
+                <span class="hero-search-icon">✦</span>
+                <input class="hero-search-input" id="heroSearchInput" placeholder="Ask SiratAI anything (e.g., What does Islam teach about patience?)..." />
+                <div class="hero-search-actions">
+                  <button class="btn btn-ghost btn-sm" onclick="App.openVoiceModal()" title="Voice input">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></svg>
+                  </button>
+                  <button class="btn btn-primary btn-sm" id="heroSearchSubmit">
+                    <span>Ask AI</span>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                  </button>
+                </div>
+              </div>
+
+              <!-- Suggested prompt chips -->
+              <div class="prompt-suggestions">
+                <span class="prompt-pill" onclick="App.navigateTo('ask'); AIChatModule.askQuery('What does Islam teach about patience?');">What does Islam teach about patience?</span>
+                <span class="prompt-pill" onclick="App.navigateTo('ask'); AIChatModule.askQuery('Explore verses about gratitude');">Explore verses about gratitude</span>
+                <span class="prompt-pill" onclick="App.navigateTo('ask'); AIChatModule.askQuery('Help me understand Salah and Khushu');">Understanding Salah</span>
+                <span class="prompt-pill" onclick="App.navigateTo('ask'); AIChatModule.askQuery('Find authentic duas for anxiety');">Duas for inner peace</span>
+              </div>
+            </div>
+
+            <!-- Hero Abstract Visual (Knowledge -> Reflection -> Understanding) -->
+            <div class="hero-visual-card animate-float">
+              <svg class="hero-svg-container" viewBox="0 0 400 320" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                  <radialGradient id="emeraldHalo" cx="50%" cy="50%" r="50%">
+                    <stop offset="0%" stop-color="#16A36A" stop-opacity="0.3" />
+                    <stop offset="100%" stop-color="#16A36A" stop-opacity="0" />
+                  </radialGradient>
+                  <radialGradient id="goldHalo" cx="50%" cy="50%" r="50%">
+                    <stop offset="0%" stop-color="#C8A951" stop-opacity="0.25" />
+                    <stop offset="100%" stop-color="#C8A951" stop-opacity="0" />
+                  </radialGradient>
+                </defs>
+                <circle cx="200" cy="160" r="130" fill="url(#emeraldHalo)" />
+                <circle cx="200" cy="160" r="80" fill="url(#goldHalo)" />
+                
+                <!-- Geometric Octagram subtle lines -->
+                <polygon points="200,60 270,90 300,160 270,230 200,260 130,230 100,160 130,90" stroke="#26322C" stroke-width="1.5" fill="none" opacity="0.6" />
+                <polygon points="200,80 256,104 280,160 256,216 200,240 144,216 120,160 144,104" stroke="#16A36A" stroke-width="1" fill="none" opacity="0.4" />
+                
+                <!-- Dynamic Nodes & Paths -->
+                <line x1="120" y1="160" x2="200" y2="100" stroke="#16A36A" stroke-width="2" stroke-dasharray="4 3" />
+                <line x1="200" y1="100" x2="280" y2="160" stroke="#2BC982" stroke-width="2" />
+                <line x1="280" y1="160" x2="200" y2="220" stroke="#C8A951" stroke-width="2" />
+                <line x1="200" y1="220" x2="120" y2="160" stroke="#16A36A" stroke-width="2" />
+
+                <!-- Center Core Glyph -->
+                <circle cx="200" cy="160" r="32" fill="#131A16" stroke="#16A36A" stroke-width="2" />
+                <text x="200" y="166" font-size="18" fill="#F5F3EA" text-anchor="middle" font-weight="700">✦</text>
+
+                <!-- Knowledge Node -->
+                <circle cx="120" cy="160" r="18" fill="#18211C" stroke="#2BC982" stroke-width="2" />
+                <text x="120" y="195" font-size="11" fill="#A8B0AA" text-anchor="middle" font-family="Inter">Knowledge</text>
+
+                <!-- Reflection Node -->
+                <circle cx="200" cy="100" r="18" fill="#18211C" stroke="#C8A951" stroke-width="2" />
+                <text x="200" y="80" font-size="11" fill="#A8B0AA" text-anchor="middle" font-family="Inter">Reflection</text>
+
+                <!-- Action Node -->
+                <circle cx="280" cy="160" r="18" fill="#18211C" stroke="#16A36A" stroke-width="2" />
+                <text x="280" y="195" font-size="11" fill="#A8B0AA" text-anchor="middle" font-family="Inter">Application</text>
+
+                <!-- Wisdom Node -->
+                <circle cx="200" cy="220" r="18" fill="#18211C" stroke="#4E9BF5" stroke-width="2" />
+                <text x="200" y="255" font-size="11" fill="#A8B0AA" text-anchor="middle" font-family="Inter">Wisdom</text>
+              </svg>
+            </div>
+          </div>
+
+          <!-- Quick Access 4 Modules -->
+          <div class="quick-access-grid">
+            <div class="quick-card" onclick="App.navigateTo('quran')">
+              <div class="quick-card-icon">◈</div>
+              <div class="card-title">Quran Explorer</div>
+              <p class="text-sm">Surah navigation, verse recitation, Arabic script and linguistic reflection.</p>
+              <span style="font-size: var(--text-xs); color: var(--color-emerald); font-weight: 600; margin-top: auto;">Explore Quran →</span>
+            </div>
+
+            <div class="quick-card" onclick="App.navigateTo('hadith')">
+              <div class="quick-card-icon">▣</div>
+              <div class="card-title">Hadith Explorer</div>
+              <p class="text-sm">Authentic collections (Bukhari, Muslim) with source grading and AI explanation.</p>
+              <span style="font-size: var(--text-xs); color: var(--color-emerald); font-weight: 600; margin-top: auto;">Explore Hadiths →</span>
+            </div>
+
+            <div class="quick-card" onclick="App.navigateTo('duas')">
+              <div class="quick-card-icon">◇</div>
+              <div class="card-title">Dua Library</div>
+              <p class="text-sm">Categorized supplications with transliteration, meanings, and direct Tasbeeh integration.</p>
+              <span style="font-size: var(--text-xs); color: var(--color-emerald); font-weight: 600; margin-top: auto;">Explore Duas →</span>
+            </div>
+
+            <div class="quick-card" onclick="App.navigateTo('tasbeeh')">
+              <div class="quick-card-icon">◉</div>
+              <div class="card-title">Digital Tasbeeh</div>
+              <p class="text-sm">Signature circular counter, audio chimes, goals, and daily session analytics.</p>
+              <span style="font-size: var(--text-xs); color: var(--color-emerald); font-weight: 600; margin-top: auto;">Open Tasbeeh →</span>
+            </div>
+          </div>
+
+          <!-- 2-Column Split: Continue Learning + Today's Reflection -->
+          <div class="home-split-section">
+            <!-- Continue Learning -->
+            <div class="card card-elevated">
+              <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: var(--space-4);">
+                <span class="eyebrow">CONTINUE LEARNING</span>
+                <a href="#learn" onclick="App.navigateTo('learn')" style="font-size: var(--text-xs); color: var(--color-emerald); font-weight: 600;">View All Paths →</a>
+              </div>
+
+              <div style="display: flex; flex-direction: column; gap: var(--space-4);">
+                <div class="card card-hoverable" onclick="App.navigateTo('learn'); LearningModule.selectPath('path-sabr');" style="background: var(--bg-surface); padding: var(--space-4);">
+                  <div style="display: flex; justify-content: space-between; margin-bottom: var(--space-2);">
+                    <strong style="color: var(--text-primary); font-size: var(--text-sm);">Understanding Sabr</strong>
+                    <span style="font-size: var(--text-xs); color: var(--color-emerald-light); font-weight: 600;">78%</span>
+                  </div>
+                  <div class="progress-bar">
+                    <div class="progress-bar-fill" style="width: 78%;"></div>
+                  </div>
+                </div>
+
+                <div class="card card-hoverable" onclick="App.navigateTo('learn'); LearningModule.selectPath('path-salah');" style="background: var(--bg-surface); padding: var(--space-4);">
+                  <div style="display: flex; justify-content: space-between; margin-bottom: var(--space-2);">
+                    <strong style="color: var(--text-primary); font-size: var(--text-sm);">Salah Foundations & Khushu</strong>
+                    <span style="font-size: var(--text-xs); color: var(--color-emerald-light); font-weight: 600;">65%</span>
+                  </div>
+                  <div class="progress-bar">
+                    <div class="progress-bar-fill" style="width: 65%;"></div>
+                  </div>
+                </div>
+
+                <div class="card card-hoverable" onclick="App.navigateTo('learn'); LearningModule.selectPath('path-tawakkul');" style="background: var(--bg-surface); padding: var(--space-4);">
+                  <div style="display: flex; justify-content: space-between; margin-bottom: var(--space-2);">
+                    <strong style="color: var(--text-primary); font-size: var(--text-sm);">Tawakkul in Daily Life</strong>
+                    <span style="font-size: var(--text-xs); color: var(--color-emerald-light); font-weight: 600;">42%</span>
+                  </div>
+                  <div class="progress-bar">
+                    <div class="progress-bar-fill" style="width: 42%;"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Today's Reflection Card -->
+            <div class="card card-elevated" style="border-left: 3px solid var(--color-gold); display: flex; flex-direction: column; justify-content: space-between;">
+              <div>
+                <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: var(--space-3);">
+                  <span class="eyebrow" style="color: var(--color-gold);">✦ TODAY'S CONTEMPLATION</span>
+                  <span class="badge badge-gold">Surah Ash-Sharh 94:5-6</span>
+                </div>
+                
+                <div class="font-arabic" style="font-size: 1.5rem; color: var(--text-primary); margin-bottom: var(--space-2);">
+                  فَإِنَّ مَعَ الْعُسْرِ يُسْرًا • إِنَّ مَعَ الْعُسْرِ يُسْرًا
+                </div>
+                <div style="font-size: var(--text-sm); color: var(--text-secondary); font-style: italic; margin-bottom: var(--space-3);">
+                  "For indeed, with hardship [will be] ease. Indeed, with hardship [will be] ease."
+                </div>
+                <p style="font-size: var(--text-sm); color: var(--text-primary); line-height: var(--leading-relaxed);">
+                  Ease does not merely arrive <em>after</em> the difficulty; it is divinely interwoven <em>with</em> the hardship itself. What inner ease or hidden growth can you perceive in your current challenges?
+                </p>
+              </div>
+
+              <div style="margin-top: var(--space-4); display: flex; justify-content: flex-end;">
+                <button class="btn btn-gold btn-sm" onclick="App.navigateTo('reflection')">
+                  Record Personal Reflection →
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Explore Topics Chips -->
+          <div style="margin-bottom: var(--space-10);">
+            <div class="eyebrow" style="margin-bottom: var(--space-3);">EXPLORE CORE THEMES</div>
+            <div style="display: flex; flex-wrap: wrap; gap: var(--space-2);">
+              <span class="chip" onclick="App.navigateTo('ask'); AIChatModule.askQuery('Tell me about Sabr');">Sabr (Patience)</span>
+              <span class="chip" onclick="App.navigateTo('ask'); AIChatModule.askQuery('Tell me about Shukr');">Shukr (Gratitude)</span>
+              <span class="chip" onclick="App.navigateTo('ask'); AIChatModule.askQuery('Tell me about Tawakkul');">Tawakkul (Reliance)</span>
+              <span class="chip" onclick="App.navigateTo('ask'); AIChatModule.askQuery('Tell me about Forgiveness');">Forgiveness (Maghfirah)</span>
+              <span class="chip" onclick="App.navigateTo('ask'); AIChatModule.askQuery('What does Islam teach about honoring parents?');">Honoring Parents</span>
+              <span class="chip" onclick="App.navigateTo('ask'); AIChatModule.askQuery('Tell me about Prophetic Character (Akhlaq)');">Character (Akhlaq)</span>
+              <span class="chip" onclick="App.navigateTo('ask'); AIChatModule.askQuery('Tell me about Salah and Khushu');">Salah</span>
+              <span class="chip" onclick="App.navigateTo('ask'); AIChatModule.askQuery('Tell me about Seeking Knowledge');">Knowledge ('Ilm)</span>
+              <span class="chip" onclick="App.navigateTo('ask'); AIChatModule.askQuery('Tell me about Sadaqah');">Charity (Sadaqah)</span>
+              <span class="chip" onclick="App.navigateTo('ask'); AIChatModule.askQuery('Tell me about Justice in Islam');">Justice ('Adl)</span>
+            </div>
+          </div>
+        </section>
+
+        <!-- ==================================================================
+             VIEW: ASK SIRATAI
+             ================================================================== -->
+        <section class="app-view" id="view-ask">
+          <div class="chat-container">
+            <div class="chat-header">
+              <div style="display: flex; align-items: center; gap: var(--space-3);">
+                <div style="width: 32px; height: 32px; border-radius: var(--radius-sm); background: var(--color-emerald-dim); color: var(--color-emerald); display: flex; align-items: center; justify-content: center; font-weight: 700;">✦</div>
+                <div>
+                  <div style="font-weight: 700; color: var(--text-primary); font-size: var(--text-base);">Ask SiratAI</div>
+                  <div style="font-size: var(--text-xs); color: var(--text-muted);">Source-grounded RAG retrieval • Educational dialogue</div>
+                </div>
+              </div>
+              <span class="badge badge-emerald">✓ Verified Sources</span>
+            </div>
+
+            <!-- Chat Stream -->
+            <div class="chat-stream" id="chatStream">
+              <!-- Initial Welcome Message -->
+              <div class="message-ai animate-fade-in-up">
+                <div style="display: flex; align-items: center; justify-content: space-between;">
+                  <span style="color: var(--color-emerald); font-weight: 700;">✦ SIRATAI</span>
+                  <span class="badge badge-neutral" style="font-size: 0.7rem;">Knowledge Assistant</span>
+                </div>
+                <p style="font-size: var(--text-base); color: var(--text-primary); line-height: var(--leading-relaxed);">
+                  Peace be upon you. I am SiratAI, an intelligent knowledge and reflection assistant. You may ask me questions regarding Quranic verses, prophetic Hadiths, supplications, and core ethical teachings.
+                </p>
+                <div style="display: flex; flex-wrap: wrap; gap: var(--space-2); margin-top: var(--space-2);">
+                  <span class="chip chat-starter-pill" style="font-size: 0.75rem;">What does Islam teach about patience?</span>
+                  <span class="chip chat-starter-pill" style="font-size: 0.75rem;">Explore verses about gratitude</span>
+                  <span class="chip chat-starter-pill" style="font-size: 0.75rem;">Explain the balance of Tawakkul and action</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Chat Input Bar -->
+            <div class="chat-input-bar">
+              <input class="input-field" id="chatInput" placeholder="Ask a question about Quran, Hadith, Duas, or Islamic principles..." />
+              <button class="icon-btn" onclick="App.openVoiceModal()" title="Voice prompt" aria-label="Voice input">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></svg>
+              </button>
+              <button class="btn btn-primary" id="chatSendBtn">
+                <span>Send</span>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+              </button>
+            </div>
+          </div>
+        </section>
+
+        <!-- ==================================================================
+             VIEW: SMART SEARCH
+             ================================================================== -->
+        <section class="app-view" id="view-search">
+          <div style="max-width: 820px; margin: 0 auto;">
+            <div class="eyebrow" style="margin-bottom: var(--space-2);">SEMANTIC KNOWLEDGE RETRIEVAL</div>
+            <h1 class="page-title" style="margin-bottom: var(--space-4);">Smart Search</h1>
+            <div class="hero-search-box" style="margin-bottom: var(--space-6);">
+              <span class="hero-search-icon">⌕</span>
+              <input class="hero-search-input" id="smartSearchInput" placeholder="Search across Quran, Hadith, Duas, and Concepts..." />
+              <button class="btn btn-primary btn-sm" onclick="App.navigateTo('ask'); AIChatModule.askQuery(document.getElementById('smartSearchInput').value || 'Patience in Islam');">Search</button>
+            </div>
+
+            <div style="display: flex; gap: var(--space-2); margin-bottom: var(--space-6);">
+              <span class="badge badge-emerald">All Sources</span>
+              <span class="badge badge-neutral">Quran Only</span>
+              <span class="badge badge-neutral">Hadith Only</span>
+              <span class="badge badge-neutral">Duas & Adhkar</span>
+            </div>
+
+            <div style="display: flex; flex-direction: column; gap: var(--space-4);">
+              <div class="card card-hoverable" onclick="App.navigateTo('quran')">
+                <span class="badge badge-emerald" style="margin-bottom: var(--space-2);">QURAN • 2:153</span>
+                <div class="card-title">Seek help through patience and prayer</div>
+                <p class="text-sm">"O you who have believed, seek help through patience and prayer. Indeed, Allah is with the patient."</p>
+              </div>
+
+              <div class="card card-hoverable" onclick="App.navigateTo('hadith')">
+                <span class="badge badge-neutral" style="margin-bottom: var(--space-2);">HADITH • SAHIH BUKHARI 1</span>
+                <div class="card-title">Actions are judged by intentions</div>
+                <p class="text-sm">"Actions are but by intentions, and every person will only have what they intended."</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ==================================================================
+             VIEW: QURAN EXPLORER
+             ================================================================== -->
+        <section class="app-view" id="view-quran">
+          <div class="quran-layout">
+            <!-- Left Surah Selector -->
+            <div class="surah-list-panel">
+              <div class="surah-search-box">
+                <input class="input-field" placeholder="Filter Surahs..." style="padding: var(--space-2) var(--space-3);" />
+              </div>
+              <div class="surah-items" id="surahListItems">
+                <!-- Injected via quran.js -->
+              </div>
+            </div>
+
+            <!-- Right Ayah Viewer -->
+            <div class="ayah-viewer" id="ayahViewer">
+              <!-- Injected via quran.js -->
+            </div>
+          </div>
+
+          <!-- Bottom Audio Player -->
+          <div class="ayah-audio-player">
+            <div style="display: flex; align-items: center; gap: var(--space-3);">
+              <button class="icon-btn" id="audioPlayPauseBtn" style="background: var(--color-emerald); color: #fff; border-color: var(--color-emerald);">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+              </button>
+              <div>
+                <div style="font-size: var(--text-sm); font-weight: 600; color: var(--text-primary);" id="playerSurahTitle">Al-Fatihah (The Opening)</div>
+                <div style="font-size: var(--text-xs); color: var(--text-muted);">Reciter: Mishary Rashid Alafasy (128 kbps)</div>
+              </div>
+            </div>
+
+            <div style="flex: 1; max-width: 450px; display: flex; align-items: center; gap: var(--space-3);">
+              <span style="font-size: var(--text-xs); color: var(--text-muted); font-family: var(--font-mono);" id="playerTime">00:00 / 03:45</span>
+              <div class="progress-bar">
+                <div class="progress-bar-fill" id="playerProgressBar" style="width: 0%;"></div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ==================================================================
+             VIEW: HADITH EXPLORER
+             ================================================================== -->
+        <section class="app-view" id="view-hadith">
+          <div style="max-width: 900px; margin: 0 auto;">
+            <div class="eyebrow" style="margin-bottom: var(--space-2);">CANONICAL PROPHETIC TRADITIONS</div>
+            <h1 class="page-title" style="margin-bottom: var(--space-4);">Hadith Explorer</h1>
+
+            <!-- Search -->
+            <input class="input-field" id="hadithSearchInput" placeholder="Search Hadiths by text, narrator, or reference (e.g. Bukhari 1)..." style="margin-bottom: var(--space-4);" />
+
+            <!-- Filters -->
+            <div class="hadith-filters">
+              <span class="chip hadith-coll-pill active" data-collection="all">All Collections</span>
+              <span class="chip hadith-coll-pill" data-collection="Sahih al-Bukhari">Sahih al-Bukhari</span>
+              <span class="chip hadith-coll-pill" data-collection="Sahih Muslim">Sahih Muslim</span>
+              <span class="chip hadith-coll-pill" data-collection="Jami` at-Tirmidhi">Jami` at-Tirmidhi</span>
+            </div>
+
+            <div class="hadith-filters" style="margin-bottom: var(--space-6);">
+              <span class="badge hadith-topic-pill active" data-topic="all" style="cursor: pointer;">All Topics</span>
+              <span class="badge hadith-topic-pill" data-topic="Intentions" style="cursor: pointer;">Intentions</span>
+              <span class="badge hadith-topic-pill" data-topic="Patience" style="cursor: pointer;">Patience</span>
+              <span class="badge hadith-topic-pill" data-topic="Tawakkul" style="cursor: pointer;">Tawakkul</span>
+              <span class="badge hadith-topic-pill" data-topic="Character" style="cursor: pointer;">Character</span>
+            </div>
+
+            <!-- Hadith List Container -->
+            <div id="hadithList">
+              <!-- Injected via hadith.js -->
+            </div>
+          </div>
+        </section>
+
+        <!-- ==================================================================
+             VIEW: DUAS
+             ================================================================== -->
+        <section class="app-view" id="view-duas">
+          <div style="max-width: 1080px; margin: 0 auto;">
+            <div class="eyebrow" style="margin-bottom: var(--space-2);">AUTHENTIC SUPPLICATIONS</div>
+            <h1 class="page-title" style="margin-bottom: var(--space-4);">Dua Library</h1>
+
+            <!-- Category Pills -->
+            <div style="display: flex; flex-wrap: wrap; gap: var(--space-2); margin-bottom: var(--space-6);">
+              <span class="chip dua-category-pill active" data-category="all">All Categories</span>
+              <span class="chip dua-category-pill" data-category="Morning">Morning</span>
+              <span class="chip dua-category-pill" data-category="Knowledge">Knowledge</span>
+              <span class="chip dua-category-pill" data-category="Difficulty">Difficulty</span>
+              <span class="chip dua-category-pill" data-category="Parents">Parents</span>
+            </div>
+
+            <!-- Duas Grid -->
+            <div class="dua-grid" id="duaGrid">
+              <!-- Injected via duas-adhkar.js -->
+            </div>
+          </div>
+        </section>
+
+        <!-- ==================================================================
+             VIEW: ADHKAR
+             ================================================================== -->
+        <section class="app-view" id="view-adhkar">
+          <div style="max-width: 900px; margin: 0 auto;">
+            <div class="eyebrow" style="margin-bottom: var(--space-2);">DAILY REMEMBRANCES</div>
+            <h1 class="page-title" style="margin-bottom: var(--space-4);">Adhkar Practice</h1>
+            <p class="text-body" style="margin-bottom: var(--space-6);">
+              Tap "Count (+1)" to increment directly on each card or click "Open in Tasbeeh" for the full immersive experience.
+            </p>
+
+            <div class="dua-grid" id="adhkarGrid">
+              <!-- Injected via duas-adhkar.js -->
+            </div>
+          </div>
+        </section>
+
+        <!-- ==================================================================
+             VIEW: TASBEEH SIGNATURE EXPERIENCE
+             ================================================================== -->
+        <section class="app-view" id="view-tasbeeh">
+          <div class="tasbeeh-container">
+            <div class="eyebrow">DIGITAL TASBEEH</div>
+            <div class="font-arabic" style="font-size: 2.4rem; color: var(--color-emerald-light);" id="tasbeehDhikrArabic">
+              سُبْحَانَ اللَّهِ
+            </div>
+            <div style="font-size: 1.1rem; font-weight: 700; color: var(--text-primary); letter-spacing: 0.08em; text-transform: uppercase;" id="tasbeehDhikrTitle">
+              SUBHANALLAH
+            </div>
+
+            <!-- Large Circular Dial -->
+            <div class="tasbeeh-dial-wrapper" id="tasbeehDialWrapper" title="Click or Press Spacebar to Count">
+              <svg class="tasbeeh-svg-ring" viewBox="0 0 260 260">
+                <circle class="tasbeeh-ring-bg" cx="130" cy="130" r="115"></circle>
+                <circle class="tasbeeh-ring-progress" id="tasbeehRingProgress" cx="130" cy="130" r="115"></circle>
+              </svg>
+              <div class="tasbeeh-center-dial">
+                <div class="tasbeeh-count-text" id="tasbeehCountDisplay">0</div>
+                <div class="tasbeeh-goal-subtext" id="tasbeehGoalDisplay">0 / 33</div>
+                <div style="font-size: 0.65rem; color: var(--text-muted); margin-top: 4px;">TAP TO COUNT</div>
+              </div>
+            </div>
+
+            <!-- Preset Selector Pills -->
+            <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: var(--space-2);">
+              <span class="chip tasbeeh-preset-pill active" data-title="SubhanAllah" data-arabic="سُبْحَانَ اللَّهِ">SubhanAllah</span>
+              <span class="chip tasbeeh-preset-pill" data-title="Alhamdulillah" data-arabic="الْحَمْدُ لِلَّهِ">Alhamdulillah</span>
+              <span class="chip tasbeeh-preset-pill" data-title="Allahu Akbar" data-arabic="اللَّهُ أَكْبَرُ">Allahu Akbar</span>
+              <span class="chip tasbeeh-preset-pill" data-title="Astaghfirullah" data-arabic="أَسْتَغْفِرُ اللَّهَ">Astaghfirullah</span>
+              <span class="chip tasbeeh-preset-pill" data-title="La ilaha illallah" data-arabic="لَا إِلَٰهَ إِلَّا اللَّهُ">La ilaha illallah</span>
+            </div>
+
+            <!-- Goal Presets -->
+            <div style="display: flex; align-items: center; gap: var(--space-2);">
+              <span style="font-size: var(--text-xs); color: var(--text-muted);">Goal:</span>
+              <span class="badge tasbeeh-goal-pill active" data-goal="33" style="cursor: pointer;">33</span>
+              <span class="badge tasbeeh-goal-pill" data-goal="99" style="cursor: pointer;">99</span>
+              <span class="badge tasbeeh-goal-pill" data-goal="100" style="cursor: pointer;">100</span>
+              <span class="badge tasbeeh-goal-pill" data-goal="300" style="cursor: pointer;">300</span>
+              <span class="badge tasbeeh-goal-pill" data-goal="1000" style="cursor: pointer;">1,000</span>
+            </div>
+
+            <!-- Controls -->
+            <div class="tasbeeh-controls">
+              <button class="btn btn-secondary btn-sm" id="tasbeehUndoBtn" title="Undo count">Undo (-1)</button>
+              <button class="btn btn-secondary btn-sm" id="tasbeehResetBtn" title="Reset counter">Reset</button>
+              <button class="btn btn-secondary btn-sm active" id="tasbeehSoundBtn" title="Toggle audio chime">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>
+                <span>Sound</span>
+              </button>
+            </div>
+
+            <!-- Quick Session Statistics -->
+            <div class="card card-elevated" style="width: 100%; display: grid; grid-template-columns: repeat(4, 1fr); text-align: center; padding: var(--space-4);">
+              <div>
+                <div style="font-size: var(--text-xs); color: var(--text-muted);">Today</div>
+                <div style="font-size: 1.25rem; font-weight: 700; color: var(--color-emerald-light); font-family: var(--font-mono);" id="tasbeehStatToday">127</div>
+              </div>
+              <div>
+                <div style="font-size: var(--text-xs); color: var(--text-muted);">This Week</div>
+                <div style="font-size: 1.25rem; font-weight: 700; color: var(--text-primary); font-family: var(--font-mono);" id="tasbeehStatWeek">840</div>
+              </div>
+              <div>
+                <div style="font-size: var(--text-xs); color: var(--text-muted);">Session Time</div>
+                <div style="font-size: 1.25rem; font-weight: 700; color: var(--text-primary); font-family: var(--font-mono);" id="tasbeehSessionTimer">00:00</div>
+              </div>
+              <div>
+                <div style="font-size: var(--text-xs); color: var(--text-muted);">Shortcut</div>
+                <div style="font-size: var(--text-xs); color: var(--color-gold); font-family: var(--font-mono); margin-top: 6px;">[Spacebar]</div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ==================================================================
+             VIEW: REFLECTION JOURNAL
+             ================================================================== -->
+        <section class="app-view" id="view-reflection">
+          <div style="max-width: 820px; margin: 0 auto;">
+            <div class="eyebrow" style="margin-bottom: var(--space-2);">PERSONAL CONTEMPLATION</div>
+            <h1 class="page-title" style="margin-bottom: var(--space-4);">My Reflection Journal</h1>
+
+            <div class="card card-elevated" style="margin-bottom: var(--space-6);">
+              <div class="input-group" style="margin-bottom: var(--space-3);">
+                <label class="input-label">Reflection Title / Verse Reference</label>
+                <input class="input-field" id="reflectionTitleInput" placeholder="e.g. Lessons on Fortitude in Surah Ash-Sharh" />
+              </div>
+
+              <div class="input-group" style="margin-bottom: var(--space-4);">
+                <label class="input-label">Contemplation</label>
+                <textarea class="textarea-field" id="reflectionTextInput" placeholder="Write your reflection, gratitude, spiritual observations, or questions..."></textarea>
+              </div>
+
+              <div style="display: flex; align-items: center; justify-content: flex-end; gap: var(--space-3);">
+                <button class="btn btn-secondary" id="analyzeReflectionBtn">
+                  ✦ Analyze with SiratAI
+                </button>
+                <button class="btn btn-primary" id="saveReflectionBtn">
+                  Save Reflection
+                </button>
+              </div>
+
+              <!-- AI Analysis Panel (Injected dynamically) -->
+              <div id="reflectionAnalysisPanel" style="margin-top: var(--space-4); display: none;"></div>
+            </div>
+
+            <!-- Saved Reflections List -->
+            <div class="eyebrow" style="margin-bottom: var(--space-3);">PAST REFLECTIONS</div>
+            <div id="reflectionsList">
+              <!-- Injected via reflection.js -->
+            </div>
+          </div>
+        </section>
+
+        <!-- ==================================================================
+             VIEW: LEARNING HUB & PATHS
+             ================================================================== -->
+        <section class="app-view" id="view-learn">
+          <div style="max-width: 960px; margin: 0 auto;">
+            <div class="eyebrow" style="margin-bottom: var(--space-2);">CURATED LEARNING PATHWAYS</div>
+            <h1 class="page-title" style="margin-bottom: var(--space-4);">Learning Hub</h1>
+
+            <!-- Path Cards Grid -->
+            <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-4); margin-bottom: var(--space-8);" id="learningPathsGrid">
+              <!-- Injected via learning.js -->
+            </div>
+
+            <!-- Vertical Animated Journey Timeline -->
+            <div class="card card-elevated" id="verticalJourneyTimeline" style="padding: var(--space-8);">
+              <!-- Injected via learning.js -->
+            </div>
+          </div>
+        </section>
+
+        <!-- ==================================================================
+             VIEW: ADAPTIVE QUIZ
+             ================================================================== -->
+        <section class="app-view" id="view-quiz">
+          <div style="max-width: 820px; margin: 0 auto;">
+            <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: var(--space-4);">
+              <div>
+                <div class="eyebrow">ASSESSMENT & RETENTION</div>
+                <h1 class="page-title">Knowledge Assessment</h1>
+              </div>
+              <div style="display: flex; align-items: center; gap: var(--space-2); font-family: var(--font-mono); color: var(--text-muted); font-size: var(--text-sm);">
+                <span>Timer:</span>
+                <span id="quizTimer" style="color: var(--color-emerald-light); font-weight: 600;">00:00</span>
+              </div>
+            </div>
+
+            <!-- Quiz Progress Bar -->
+            <div class="progress-bar" style="margin-bottom: var(--space-6);">
+              <div class="progress-bar-fill" id="quizProgressBar" style="width: 0%;"></div>
+            </div>
+
+            <!-- Quiz Question Container -->
+            <div id="quizContainer">
+              <!-- Injected via quiz.js -->
+            </div>
+          </div>
+        </section>
+
+        <!-- ==================================================================
+             VIEW: D3 KNOWLEDGE GRAPH
+             ================================================================== -->
+        <section class="app-view" id="view-graph">
+          <div class="graph-container">
+            <!-- Controls Overlay -->
+            <div class="graph-overlay-controls">
+              <button class="btn btn-secondary btn-sm" id="graphZoomIn">+</button>
+              <button class="btn btn-secondary btn-sm" id="graphZoomOut">-</button>
+              <button class="btn btn-secondary btn-sm" id="graphZoomReset">Reset</button>
+              <span class="badge badge-emerald" style="margin-left: var(--space-2);">Interactive D3 Force Graph</span>
+            </div>
+
+            <!-- Slide-over details drawer -->
+            <div class="graph-details-drawer" id="graphDetailDrawer">
+              <!-- Injected via knowledge-graph.js -->
+            </div>
+
+            <!-- SVG Container -->
+            <div id="knowledgeGraphSvg" style="width: 100%; height: 100%;"></div>
+          </div>
+        </section>
+
+        <!-- ==================================================================
+             VIEW: PERSONAL DASHBOARD
+             ================================================================== -->
+        <section class="app-view" id="view-dashboard">
+          <div style="max-width: 1200px; margin: 0 auto;">
+            <!-- Time-Sensitive Greeting -->
+            <div id="dashboardGreeting" style="margin-bottom: var(--space-6);">
+              <h1 class="page-title">Good evening.</h1>
+              <p class="text-body">Continue your learning and reflection journey.</p>
+            </div>
+
+            <!-- 5 Top KPI Cards -->
+            <div class="dashboard-kpi-grid">
+              <div class="kpi-card">
+                <span style="font-size: var(--text-xs); color: var(--text-muted);">Learning Sessions</span>
+                <div class="kpi-value" style="color: var(--color-emerald-light);">24</div>
+                <span style="font-size: 0.7rem; color: var(--color-emerald);">+4 this week</span>
+              </div>
+
+              <div class="kpi-card">
+                <span style="font-size: var(--text-xs); color: var(--text-muted);">Topics Explored</span>
+                <div class="kpi-value">18</div>
+                <span style="font-size: 0.7rem; color: var(--text-muted);">6 foundational</span>
+              </div>
+
+              <div class="kpi-card">
+                <span style="font-size: var(--text-xs); color: var(--text-muted);">Saved Sources</span>
+                <div class="kpi-value" id="kpiSavedSources">46</div>
+                <span style="font-size: 0.7rem; color: var(--color-gold);">Personal collection</span>
+              </div>
+
+              <div class="kpi-card">
+                <span style="font-size: var(--text-xs); color: var(--text-muted);">Knowledge Checks</span>
+                <div class="kpi-value">12</div>
+                <span style="font-size: 0.7rem; color: var(--color-emerald);">88% retention</span>
+              </div>
+
+              <div class="kpi-card">
+                <span style="font-size: var(--text-xs); color: var(--text-muted);">Tasbeeh Total</span>
+                <div class="kpi-value" style="color: var(--color-jade);" id="kpiTasbeehTotal">1,420</div>
+                <span style="font-size: 0.7rem; color: var(--color-jade);">Daily habit active</span>
+              </div>
+            </div>
+
+            <!-- Charts 2-Column Grid -->
+            <div class="dashboard-charts-grid">
+              <!-- Activity Chart -->
+              <div class="chart-card">
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                  <span class="card-title">Learning & Reflection Activity</span>
+                  <span class="badge badge-neutral">Last 7 Days</span>
+                </div>
+                <div class="chart-canvas-wrapper">
+                  <canvas id="dashboardActivityChart"></canvas>
+                </div>
+              </div>
+
+              <!-- Topic Donut Chart -->
+              <div class="chart-card">
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                  <span class="card-title">Topics Distribution</span>
+                  <span class="badge badge-emerald">Comprehensive</span>
+                </div>
+                <div class="chart-canvas-wrapper">
+                  <canvas id="dashboardTopicsChart"></canvas>
+                </div>
+              </div>
+            </div>
+
+            <!-- Explainable Recommendations & Knowledge Gaps -->
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-6); margin-bottom: var(--space-8);">
+              <!-- Explainable Recommendations -->
+              <div class="card card-elevated">
+                <div class="eyebrow" style="margin-bottom: var(--space-2);">RECOMMENDED FOR YOU</div>
+                <h3 style="font-size: 1.15rem; font-weight: 700; color: var(--text-primary); margin-bottom: var(--space-1);">
+                  Understanding Tawakkul & Anxiety
+                </h3>
+                <div style="background: var(--bg-surface); padding: var(--space-3); border-radius: var(--radius-sm); border-left: 2px solid var(--color-emerald); font-size: var(--text-xs); color: var(--text-secondary); margin: var(--space-3) 0;">
+                  <strong>Why this?</strong> Recommended based on your recent explorations of Sabr and Surah Ash-Sharh.
+                </div>
+                <button class="btn btn-primary btn-sm" onclick="App.navigateTo('learn'); LearningModule.selectPath('path-tawakkul');">
+                  Start Pathway →
+                </button>
+              </div>
+
+              <!-- Knowledge Gaps / Areas to Explore -->
+              <div class="card card-elevated">
+                <div class="eyebrow" style="margin-bottom: var(--space-2); color: var(--color-gold);">AREAS TO EXPLORE</div>
+                <div style="display: flex; flex-direction: column; gap: var(--space-3); margin-top: var(--space-3);">
+                  <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border-subtle); padding-bottom: var(--space-2);">
+                    <div>
+                      <div style="font-weight: 600; font-size: var(--text-sm); color: var(--text-primary);">Salah: Cultivating Khushu</div>
+                      <div style="font-size: var(--text-xs); color: var(--text-muted);">Recommended Next Step</div>
+                    </div>
+                    <button class="btn btn-outline btn-sm" onclick="App.navigateTo('learn')">Explore</button>
+                  </div>
+                  <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <div>
+                      <div style="font-weight: 600; font-size: var(--text-sm); color: var(--text-primary);">Tawakkul vs Fatalism</div>
+                      <div style="font-size: var(--text-xs); color: var(--text-muted);">Recommended Revision</div>
+                    </div>
+                    <button class="btn btn-outline btn-sm" onclick="App.navigateTo('learn')">Review</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ==================================================================
+             VIEW: PERSONAL LIBRARY
+             ================================================================== -->
+        <section class="app-view" id="view-library">
+          <div style="max-width: 860px; margin: 0 auto;">
+            <div class="eyebrow" style="margin-bottom: var(--space-2);">MY PERSONAL COLLECTION</div>
+            <h1 class="page-title" style="margin-bottom: var(--space-4);">My Library</h1>
+            <div id="libraryList">
+              <!-- Injected via app.js -->
+            </div>
+          </div>
+        </section>
+
+        <!-- ==================================================================
+             VIEW: HISTORY
+             ================================================================== -->
+        <section class="app-view" id="view-history">
+          <div style="max-width: 860px; margin: 0 auto;">
+            <div class="eyebrow" style="margin-bottom: var(--space-2);">RECENT ACTIVITY TIMELINE</div>
+            <h1 class="page-title" style="margin-bottom: var(--space-4);">History</h1>
+            <div class="card card-elevated" id="historyList" style="padding: var(--space-6);">
+              <!-- Injected via app.js -->
+            </div>
+          </div>
+        </section>
+
+        <!-- ==================================================================
+             VIEW: SETTINGS
+             ================================================================== -->
+        <section class="app-view" id="view-settings">
+          <div style="max-width: 820px; margin: 0 auto;">
+            <div class="eyebrow" style="margin-bottom: var(--space-2);">CONFIGURATION</div>
+            <h1 class="page-title" style="margin-bottom: var(--space-4);">Settings</h1>
+
+            <div class="card card-elevated" style="display: flex; flex-direction: column; gap: var(--space-6);">
+              <!-- Appearance -->
+              <div>
+                <h3 style="font-size: 1.15rem; font-weight: 600; color: var(--text-primary); margin-bottom: var(--space-2);">Appearance</h3>
+                <div style="display: flex; gap: var(--space-3);">
+                  <button class="btn btn-secondary btn-sm" onclick="document.documentElement.setAttribute('data-theme', 'dark'); StorageService.setTheme('dark'); App.showToast('Dark theme activated');">Dark Mode</button>
+                  <button class="btn btn-secondary btn-sm" onclick="document.documentElement.setAttribute('data-theme', 'light'); StorageService.setTheme('light'); App.showToast('Light theme activated');">Light Mode</button>
+                </div>
+              </div>
+
+              <!-- AI Safety -->
+              <div style="border-top: 1px solid var(--border-subtle); padding-top: var(--space-4);">
+                <h3 style="font-size: 1.15rem; font-weight: 600; color: var(--text-primary); margin-bottom: var(--space-1);">AI Safety & Scholarly Ethics</h3>
+                <p style="font-size: var(--text-xs); color: var(--text-secondary); line-height: 1.6;">
+                  SiratAI is strictly an educational tool designed for comprehension, reflection, and source exploration. It does not issue religious fatwas or replace qualified scholars.
+                </p>
+              </div>
+
+              <!-- Data Management -->
+              <div style="border-top: 1px solid var(--border-subtle); padding-top: var(--space-4);">
+                <h3 style="font-size: 1.15rem; font-weight: 600; color: var(--text-primary); margin-bottom: var(--space-2);">Local Data</h3>
+                <button class="btn btn-secondary btn-sm" onclick="localStorage.clear(); App.showToast('Local prototype state cleared'); setTimeout(() => location.reload(), 800);">
+                  Reset Local Data
+                </button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+      </div>
+
+      <!-- ====================================================================
+           LANDING PAGE FOOTER
+           ==================================================================== -->
+      <footer style="border-top: 1px solid var(--border-subtle); background: var(--bg-deep-forest); padding: var(--space-10) var(--space-6); margin-top: auto;">
+        <div class="container" style="display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: var(--space-8);">
+          <div>
+            <div style="display: flex; align-items: center; gap: var(--space-2); margin-bottom: var(--space-2);">
+              <span style="color: var(--color-emerald); font-weight: 700; font-size: 1.2rem;">✦</span>
+              <strong style="font-size: 1.15rem; letter-spacing: 0.08em; color: var(--text-primary);">SIRATAI</strong>
+            </div>
+            <p style="font-size: var(--text-xs); color: var(--text-muted); max-width: 320px; line-height: 1.6;">
+              Where Islamic knowledge meets intelligent technology. Grounded learning, authentic sources, and personal contemplation.
+            </p>
+            <div style="font-size: 0.68rem; color: var(--color-gold); margin-top: var(--space-3);">
+              SiratAI is an educational technology platform. AI-generated explanations are not a substitute for qualified scholarly guidance.
+            </div>
+          </div>
+
+          <div>
+            <div style="font-size: var(--text-xs); font-weight: 700; text-transform: uppercase; color: var(--text-primary); margin-bottom: var(--space-3);">Explore</div>
+            <div style="display: flex; flex-direction: column; gap: var(--space-2); font-size: var(--text-xs); color: var(--text-muted);">
+              <a href="#quran" onclick="App.navigateTo('quran')">Quran Explorer</a>
+              <a href="#hadith" onclick="App.navigateTo('hadith')">Hadith Explorer</a>
+              <a href="#duas" onclick="App.navigateTo('duas')">Dua Library</a>
+              <a href="#adhkar" onclick="App.navigateTo('adhkar')">Adhkar</a>
+              <a href="#tasbeeh" onclick="App.navigateTo('tasbeeh')">Tasbeeh Counter</a>
+            </div>
+          </div>
+
+          <div>
+            <div style="font-size: var(--text-xs); font-weight: 700; text-transform: uppercase; color: var(--text-primary); margin-bottom: var(--space-3);">Learning</div>
+            <div style="display: flex; flex-direction: column; gap: var(--space-2); font-size: var(--text-xs); color: var(--text-muted);">
+              <a href="#learn" onclick="App.navigateTo('learn')">Learning Paths</a>
+              <a href="#quiz" onclick="App.navigateTo('quiz')">Knowledge Checks</a>
+              <a href="#graph" onclick="App.navigateTo('graph')">Knowledge Map</a>
+              <a href="#reflection" onclick="App.navigateTo('reflection')">Reflection Journal</a>
+            </div>
+          </div>
+
+          <div>
+            <div style="font-size: var(--text-xs); font-weight: 700; text-transform: uppercase; color: var(--text-primary); margin-bottom: var(--space-3);">Platform</div>
+            <div style="display: flex; flex-direction: column; gap: var(--space-2); font-size: var(--text-xs); color: var(--text-muted);">
+              <a href="#ask" onclick="App.navigateTo('ask')">Ask SiratAI</a>
+              <a href="#dashboard" onclick="App.navigateTo('dashboard')">Personal Dashboard</a>
+              <a href="#library" onclick="App.navigateTo('library')">My Library</a>
+              <a href="#settings" onclick="App.navigateTo('settings')">Settings</a>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </main>
+
+    <!-- ====================================================================
+         MOBILE BOTTOM NAVIGATION (5 Primary Items)
+         ==================================================================== -->
+    <nav class="mobile-nav" aria-label="Mobile Navigation">
+      <a href="#home" class="mobile-nav-item active" data-view="home">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>
+        <span>Home</span>
+      </a>
+      <a href="#ask" class="mobile-nav-item" data-view="ask">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"/></svg>
+        <span>Ask AI</span>
+      </a>
+      <a href="#quran" class="mobile-nav-item" data-view="quran">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/></svg>
+        <span>Explore</span>
+      </a>
+      <a href="#tasbeeh" class="mobile-nav-item" data-view="tasbeeh">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="3"/></svg>
+        <span>Tasbeeh</span>
+      </a>
+      <a href="#dashboard" class="mobile-nav-item" data-view="dashboard">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="9"/><rect x="14" y="3" width="7" height="9"/></svg>
+        <span>Dashboard</span>
+      </a>
+    </nav>
+
+    <!-- ====================================================================
+         SIGNATURE FLOATING ACTION BUTTON (THE BEST FAB)
+         ==================================================================== -->
+    <div class="fab-container" id="fabContainer">
+      <!-- Expanding Speed-Dial Menu -->
+      <div class="fab-menu">
+        <div class="fab-action-item">
+          <span class="fab-action-label">Quick Dhikr (+1 Tap)</span>
+          <button class="fab-action-btn" id="fabActionDhikr" title="Quick Dhikr (+1 Tap)" aria-label="Quick Dhikr count">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3"/></svg>
+          </button>
+        </div>
+        <div class="fab-action-item">
+          <span class="fab-action-label">Ask SiratAI</span>
+          <button class="fab-action-btn" id="fabActionAsk" title="Ask SiratAI" aria-label="Ask SiratAI">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"/></svg>
+          </button>
+        </div>
+        <div class="fab-action-item">
+          <span class="fab-action-label">Daily Dua</span>
+          <button class="fab-action-btn" id="fabActionDua" title="Daily Dua" aria-label="Daily Dua">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          </button>
+        </div>
+        <div class="fab-action-item">
+          <span class="fab-action-label">Quick Reflection</span>
+          <button class="fab-action-btn" id="fabActionReflect" title="Quick Reflection" aria-label="Quick Reflection">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+          </button>
+        </div>
+        <div class="fab-action-item">
+          <span class="fab-action-label">Voice Search</span>
+          <button class="fab-action-btn" id="fabActionVoice" title="Voice Search" aria-label="Voice Search">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/></svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Main FAB Trigger Button -->
+      <button class="fab-trigger" id="fabTriggerBtn" aria-label="Quick Actions Floating Menu" title="Quick Actions (Alt + F)">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+          <line x1="12" y1="5" x2="12" y2="19"></line>
+          <line x1="5" y1="12" x2="19" y2="12"></line>
+        </svg>
+      </button>
+    </div>
+
+    <!-- ====================================================================
+         COMMAND PALETTE (CTRL+K)
+         ==================================================================== -->
+    <div class="palette-backdrop" id="commandPalette" role="dialog" aria-modal="true" aria-label="Command Palette">
+      <div class="palette-modal">
+        <div class="palette-search-box">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          <input class="palette-input" id="paletteInput" placeholder="Type a destination or search (e.g. Tasbeeh, Sabr, Quran)..." />
+          <span class="badge badge-neutral" style="font-size: 0.7rem;">ESC to close</span>
+        </div>
+        <div class="palette-results" id="paletteResults">
+          <!-- Injected via app.js -->
+        </div>
+        <div class="palette-footer">
+          <span>Navigate with <kbd>↑</kbd> <kbd>↓</kbd></span>
+          <span>Press <kbd>↵</kbd> to select</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ====================================================================
+         NOTIFICATION DRAWER
+         ==================================================================== -->
+    <div class="drawer-backdrop" id="drawerBackdrop"></div>
+    <div class="drawer" id="notificationDrawer" role="region" aria-label="Notification Center">
+      <div style="padding: var(--space-5); border-bottom: 1px solid var(--border-subtle); display: flex; align-items: center; justify-content: space-between;">
+        <div style="font-weight: 700; color: var(--text-primary);">Notification Center</div>
+        <button class="btn btn-ghost btn-sm" id="drawerCloseBtn">✕</button>
+      </div>
+      <div style="padding: var(--space-5); display: flex; flex-direction: column; gap: var(--space-3); overflow-y: auto;">
+        <div class="card" style="padding: var(--space-3);">
+          <div style="font-size: var(--text-xs); color: var(--color-emerald-light); font-weight: 600;">Learning Progress</div>
+          <div style="font-size: var(--text-sm); color: var(--text-primary); margin-top: 2px;">Completed 78% of "Understanding Sabr"</div>
+          <div style="font-size: 0.7rem; color: var(--text-muted); margin-top: 4px;">2 hours ago</div>
+        </div>
+
+        <div class="card" style="padding: var(--space-3);">
+          <div style="font-size: var(--text-xs); color: var(--color-gold); font-weight: 600;">Tasbeeh Milestone</div>
+          <div style="font-size: var(--text-sm); color: var(--text-primary); margin-top: 2px;">Completed 100 repetitions of Astaghfirullah</div>
+          <div style="font-size: 0.7rem; color: var(--text-muted); margin-top: 4px;">Today, 10:15 AM</div>
+        </div>
+
+        <div class="card" style="padding: var(--space-3);">
+          <div style="font-size: var(--text-xs); color: var(--color-emerald-light); font-weight: 600;">Explainable AI Recommendation</div>
+          <div style="font-size: var(--text-sm); color: var(--text-primary); margin-top: 2px;">New pathway available: Tawakkul in Daily Life</div>
+          <div style="font-size: 0.7rem; color: var(--text-muted); margin-top: 4px;">Yesterday</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ====================================================================
+         GENERIC MODAL (Daily Dua, Quick Reflection, Voice UI)
+         ==================================================================== -->
+    <div class="modal-backdrop" id="genericModal" role="dialog" aria-modal="true">
+      <div class="modal-dialog">
+        <div class="modal-header">
+          <span style="font-weight: 700; color: var(--text-primary);" id="genericModalTitle">SiratAI Notice</span>
+          <button class="btn btn-ghost btn-sm" onclick="document.getElementById('genericModal').classList.remove('open')">✕</button>
+        </div>
+        <div class="modal-body" id="genericModalBody">
+          <!-- Injected dynamically -->
+        </div>
+      </div>
+    </div>
+
+    <!-- ====================================================================
+         AUTH MODAL
+         ==================================================================== -->
+    <div class="modal-backdrop" id="authModal" role="dialog" aria-modal="true" aria-label="Account Login">
+      <div class="modal-dialog">
+        <div class="modal-header">
+          <div style="display: flex; align-items: center; gap: var(--space-2);">
+            <span style="color: var(--color-emerald); font-weight: 700;">✦</span>
+            <strong style="color: var(--text-primary);">SiratAI Account</strong>
+          </div>
+          <button class="btn btn-ghost btn-sm" id="authCloseBtn">✕</button>
+        </div>
+        <div class="modal-body">
+          <div style="display: flex; gap: var(--space-2); margin-bottom: var(--space-4);">
+            <button class="btn btn-primary btn-sm" style="flex: 1;">Sign In</button>
+            <button class="btn btn-secondary btn-sm" style="flex: 1;">Create Account</button>
+          </div>
+          <div class="input-group" style="margin-bottom: var(--space-3);">
+            <label class="input-label">Email Address</label>
+            <input class="input-field" type="email" value="khushi@siratai.ai" />
+          </div>
+          <div class="input-group" style="margin-bottom: var(--space-4);">
+            <label class="input-label">Password</label>
+            <input class="input-field" type="password" value="••••••••••••" />
+          </div>
+          <button class="btn btn-primary" style="width: 100%;" onclick="document.getElementById('authModal').classList.remove('open'); App.showToast('Logged in as Khushi');">
+            Continue →
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Toast Notifications Container -->
+    <div class="toast-container" id="toastContainer"></div>
+  </div>
+
+  <!-- Master Application Script -->
+  <script src="script.js"></script>
+</body>
+</html>
